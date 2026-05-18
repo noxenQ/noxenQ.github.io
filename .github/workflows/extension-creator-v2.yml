@@ -1,6 +1,7 @@
 name: Build Firefox Addon
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - 'manifest.json'
