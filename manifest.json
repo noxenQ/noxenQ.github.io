@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "NFC History Clearer",
   "version": "1.0",
   "description": "Clears browsing history when triggered by NFC tag",
@@ -7,12 +7,11 @@
     "browsingData",
     "webNavigation",
     "tabs",
-    "notifications"
+    "notifications",
+    "https://noxenq.github.io/*"
   ],
   "background": {
-    "service_worker": "background.js"
-  },
-  "host_permissions": [
-    "https://noxenq.github.io/*"
-  ]
+    "scripts": ["background.js"],
+    "persistent": false
+  }
 }
