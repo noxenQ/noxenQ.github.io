@@ -1,0 +1,23 @@
+name: Build Firefox Addon
+
+on:
+  push:
+    paths:
+      - 'manifest.json'
+      - 'background.js'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Zip addon files
+        run: zip nfc-clearer.zip manifest.json background.js
+
+      - name: Upload as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nfc-clearer
+          path: nfc-clearer.zip
