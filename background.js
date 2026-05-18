@@ -1,9 +1,7 @@
 const TRIGGER_URL = "https://noxenq.github.io/clear.html";
 
-browser.webNavigation.onCompleted.addListener((details) => {
+browser.webNavigation.onBeforeNavigate.addListener((details) => {
   if (details.url === TRIGGER_URL) {
-
-    browser.tabs.remove(details.tabId);
 
     browser.browsingData.removeHistory({ since: 0 }, () => {
       browser.notifications.create({
@@ -12,5 +10,7 @@ browser.webNavigation.onCompleted.addListener((details) => {
         message: "Browsing history has been cleared."
       });
     });
+
+    browser.tabs.remove(details.tabId);
   }
 }, { url: [{ urlContains: "noxenq.github.io/clear" }] });
