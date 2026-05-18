@@ -1,17 +1,16 @@
 const TRIGGER_URL = "https://noxenq.github.io/clear.html";
 
-chrome.webNavigation.onCompleted.addListener((details) => {
+browser.webNavigation.onCompleted.addListener((details) => {
   if (details.url === TRIGGER_URL) {
 
-    chrome.tabs.remove(details.tabId);
+    browser.tabs.remove(details.tabId);
 
-    chrome.browsingData.removeHistory({ since: 0 }, () => {
-      chrome.notifications.create({
+    browser.browsingData.removeHistory({ since: 0 }, () => {
+      browser.notifications.create({
         type: "basic",
-        iconUrl: "icon.png",
         title: "History Cleared",
         message: "Browsing history has been cleared."
       });
     });
   }
-}, { url: [{ urlContains: "noxenq.github.io/clear.html" }] });
+}, { url: [{ urlContains: "noxenq.github.io/clear" }] });
