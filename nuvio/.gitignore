@@ -1,0 +1,13 @@
+AGENTS.md
+.roo
+favicon.svg
+
+node_modules/
+tests/
+*.ipk
+*.wgt
+dist/
+.cache/
+.pm2/
+logs/
+.DS_Store
